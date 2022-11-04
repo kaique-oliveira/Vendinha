@@ -10,7 +10,7 @@ body{
     height: 95hv;
     display: flex;
     flex-direction: column;
-    background-color: rgb(211, 211, 211);
+    background-color: rgb(29, 29, 36);
 }
 
 /* Barra de navegacao */
@@ -18,7 +18,7 @@ header{
     display: flex;
     align-items: center;
     height: 30px;
-    background-color: rgb(44, 44, 44);
+    background-color: rgb(20, 20, 27);
     margin-bottom:22px;
 }
 
@@ -33,6 +33,8 @@ nav{
     text-decoration: none;
     size: 2em;
     color: rgb(211, 211, 211);
+    background-color: transparent;
+    border: none;
 }
 
 
@@ -47,15 +49,17 @@ section{
     flex-direction: column;
     width: 95%;
     height: 83vh;
-    background-color: rgb(146, 146, 146); 
+    padding: 5px;
+    background-color: rgb(20, 20, 27);
+    border-radius: 5px;
 }
 
 
 
  /*Tabela*/
 thead{
-    background-color: rgb(43, 43, 43);
-    color: rgb(211, 211, 211);
+    background-color: rgb(20, 20, 27);
+    color: rgb(5, 163, 255);
 }
 
 tr{
@@ -96,13 +100,13 @@ th:nth-child(6), td:nth-child(6){
 }
 
 tbody{
-    border-top:  1px solid rgb(211, 211, 211);
-    background-color: rgb(146, 146, 146); 
+    border-top:  1px solid rgb(20, 20, 27);
+    background-color:rgb(29, 29, 36);
 }
 
 td{
-    border-bottom: 1px solid rgb(211, 211, 211);
-    color:rgb(43, 43, 43);
+    border-bottom: 1px solid rgb(20, 20, 27);
+    color:rgb(180, 178, 178);
 }
 
 
