@@ -1,0 +1,24 @@
+
+.modal-content{
+    background-color: rgb(29, 29, 36);
+}
+
+.modal-header{
+    display: flex;
+    justify-content: flex-end;
+    height: 2.5em;
+    border-color: rgb(15, 15, 20);
+    background-color: rgb(29, 29, 36);
+    padding: 10px;
+}
+
+.btn-fechar{
+    color: crimson;
+    border: none;
+    background-color: rgb(29, 29, 36);
+}
+
+.btn-fechar:hover{
+    color: rgb(255, 0, 51);
+}
+

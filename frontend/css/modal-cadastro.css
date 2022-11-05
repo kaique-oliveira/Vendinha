@@ -1,0 +1,97 @@
+.modal-body{
+    display: flex;
+    flex-direction: column;
+}
+
+.row-campos{
+    height: 60px;
+}
+
+.row-aviso-tabela{
+    height: 20px;
+    text-align: center;
+}
+
+.row-tabela{
+    height: 165px;
+}
+
+
+
+.input-group-text{
+    border-color: rgb(15, 15, 20);
+    background-color: rgb(15, 15, 20);
+    color: rgb(83, 83, 83);
+    border-radius: 5px 0 0 5px;
+}
+
+.form-control{
+    border-color: rgb(211, 211, 211);
+    background-color: rgb(211, 211, 211);
+}
+
+.container-btn{
+    display: flex;
+    justify-content: center;
+    height: 2em;
+    align-items: center;
+    margin-top: 1em;
+}
+
+.btn-salvar{
+    border: none;
+    background-color: rgb(15, 15, 20);
+    color: rgb(211, 211, 211);
+    width: 10%;
+    height: 100%;
+    border-radius: 5px;
+}
+
+.btn-salvar:hover{
+    color:rgb(46, 179, 255);
+}
+
+.container-add-divida{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+#btn-adiciona{
+    border: none;
+    border-radius: 100px;
+    width: 1.6em;
+    height: 1.6em;
+    background-color: rgb(15, 15, 20);
+    color: rgb(211, 211, 211);
+}
+
+#btn-adiciona:hover{
+    color:rgb(46, 179, 255);
+}
+
+.cabecalho-add-dividas:nth-child(1){
+    width: 60%;
+    /*ID*/
+}
+.cabecalho-add-dividas:nth-child(2){
+    width: 20%;
+     /*Nome*/
+}
+.cabecalho-add-dividas:nth-child(3){
+    width: 20%;
+     /*Nome*/
+}
+
+#conteudo-tabela-add-divida{
+    height: 120px;
+}
+
+.validacao{
+    font-size: small;
+    width: 100%;
+    color: rgb(255, 91, 91);
+    text-align: center;
+    font-weight: 100;
+}

@@ -7,56 +7,168 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
 
     <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/modal.css">
+    <link rel="stylesheet" href="./css/modal-cadastro.css">
+
+    <script src="./javascript/cliente.js" defer></script>
+    <script src="./javascript/index.js" defer></script>
+    <script src="./javascript/modal-cadastro.js" defer></script>
+    
 
     <title>Vendinha</title>
 </head>
 <body>
     <header>
         <nav>
-            <span class="material-symbols-outlined navbar-icon" href="">storefront</span>
-            <button class="material-symbols-outlined navbar-icon" href="">person_add</button>
+            <span class="material-symbols-outlined icon" href="#">storefront</span>
+            <button class="material-symbols-outlined icon" href="#" 
+                data-bs-target="#modal-cadastro-cliente" data-bs-toggle="modal">person_add</button>
         </nav>
     </header>
 
     <main>
+        <!-- tabela -->
         <section>
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">NOME</th>
-                        <th scope="col">CPF</th>
-                        <th scope="col">IDADE</th>
-                        <th scope="col">TELEFONE</th>
-                        <th scope="col"> </th>
+                        <th class="cabecalho-clientes" scope="col">ID</th>
+                        <th class="cabecalho-clientes" scope="col">NOME</th>
+                        <th class="cabecalho-clientes" scope="col">CPF</th>
+                        <th class="cabecalho-clientes" scope="col">IDADE</th>
+                        <th class="cabecalho-clientes" scope="col">TELEFONE</th>
+                        <th class="cabecalho-clientes" scope="col"> </th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Kaique Oliveira</td>
-                        <td>458.252.558-00</td>
-                        <td>28</td>
-                        <td>(14)99162-9456</td>
-                        <td>Botoes</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Kaique Oliveira</td>
-                        <td>458.252.558-00</td>
-                        <td>28</td>
-                        <td>(14)99162-9456</td>
-                        <td>Botoes</td>
-                    </tr>
+                <tbody id="conteudo-tabela-clientes">   
                 </tbody>
             </table>
         </section>
+
+        <!-- modal cadastro cliente -->
+        <section id="modal-cadastro-cliente" class="modal fade" data-bs-backdrop="static" tabindex="-1">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="material-symbols-outlined btn-fechar" data-bs-dismiss="modal">close</button>
+                    </div>
+                    <form id="form-cad-cliente" class="modal-body">
+                        <div class="row row-campos">
+                            <div class="col-8">
+                                <div class="input-group input-group-sm mb-3">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" for="nome-cliente">Nome</label>
+                                    </div>
+                                    <input id="nome-cliente" type="text" class="form-control" onclick="limparAviso(this)">
+                                    <span id="texto-aviso-nome" class="validacao" hidden>Campo nome é obrigatório</span>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="input-group input-group-sm mb-3">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" for="cpf-cliente">CPF</label>
+                                    </div>
+                                    <input id="cpf-cliente" type="text" class="form-control" onclick="limparAviso(this)">
+                                    <span id="texto-aviso-cpf" class="validacao" hidden>CPF é obrigatório</span>
+                                </div> 
+                            </div>
+                        </div>
+
+                        <div class="row row-campos">
+                            <div class="col-6">
+                                <div class="input-group input-group-sm mb-3">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" for="nascimento-cliente">Nascimento</label>
+                                    </div>
+                                    <input id="nascimento-cliente" type="date" class="form-control" onclick="limparAviso(this)">
+                                    <span id="texto-aviso-nascimento" class="validacao" hidden>Data de nascimento é obrigatório</span>
+                                </div> 
+                            </div>
+                            <div class="col-6">
+                                <div class="input-group input-group-sm mb-3">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" for="telefone-cliente">Telefone</label>
+                                    </div>
+                                    <input id="telefone-cliente" type="text" class="form-control">
+                                </div> 
+                            </div>
+                        </div>
+                        <div class="row row-campos">
+                            <div class="col-12">
+                                <div class="input-group input-group-sm mb-3">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" for="foto-cliente">URL foto</label>
+                                    </div>
+                                    <input id="foto-cliente" type="url" class="form-control">
+                                </div> 
+                            </div>
+                        </div>
+
+                        <div class="row row-campos">
+                            <div class="col-7">
+                                <div class="input-group input-group-sm mb-9">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" for="descricao-cliente">Descrição</label>
+                                    </div>
+                                    <input id="descricao-add-divida" type="text" class="form-control" onclick="limparAviso(this)">
+                                    <span id="texto-aviso-descricao" class="validacao" hidden>Descrição é obrigatório</span>
+                                </div> 
+                            </div>
+                            <div class="col-3">
+                                <div class="input-group input-group-sm mb-3">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" for="valor-cliente">Valor</label>
+                                    </div>
+                                    <input id="valor-add-divida" type="text" class="form-control" onclick="limparAviso(this)">
+                                    <span id="texto-aviso-valor" class="validacao" hidden>Valor é obrigatório</span>
+                                </div> 
+                            </div>
+                            <div class="col-2">
+                                <button id="btn-adiciona" class="material-symbols-outlined"
+                                    onclick="addDividas()" type="button">add</button>                                 
+                            </div> 
+                                           
+                        </div>
+                 
+                        <div class="row row-aviso-tabela">
+                            <div class="col-12">
+                                <span id="texto-aviso-tabela" class="validacao" hidden>Adicone ao menos uma divida</span> 
+                            </div>
+                        </div>
+                        <div class="row row-tabela">
+                            <div class="col-12">                             
+                                <table class="table">                                   
+                                    <thead>
+                                        <tr>
+                                            <th class="cabecalho-add-dividas" scope="col">DESCRIÇÃO</th>
+                                            <th class="cabecalho-add-dividas" scope="col">VALOR</th>
+                                            <th class="cabecalho-add-dividas" scope="col"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="conteudo-tabela-add-divida">   
+                                    </tbody>
+                                </table>                             
+                            </div>
+                        </div>
+
+                        <div class="container-btn">
+                            <button id="btn-salva" class="btn-salvar" type="button" onclick="validarCamposObrigatorios()">salvar</button>
+                        </div>                    
+                    </form>
+                </div>
+            </div>
+        </section>
+
     </main>
 
     <footer>
-        &copy; Kaique Oliveira - Interfocus 2022.
+        &copy; Desafio Interfocus 2022 - Kaique Oliveira
     </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js" integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script> 
 </body>
 </html>
