@@ -5,26 +5,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="https://igorescobar.github.io/jQuery-Mask-Plugin/js/jquery.mask.min.js"></script>    
+      
 
     <link rel="stylesheet" href="./css/index.css">
     <link rel="stylesheet" href="./css/modal.css">
     <link rel="stylesheet" href="./css/modal-cadastro.css">
+    <link rel="stylesheet" href="./css/modal-dividas.css">
 
     <script src="./javascript/cliente.js" defer></script>
+    <script src="./javascript/divida.js" defer></script>
     <script src="./javascript/index.js" defer></script>
-    <script src="./javascript/modal-cadastro.js" defer></script>
+    <script src="./javascript/modal-cadastro.js" defer></script>  
+    <script src="./javascript/modal-dividas.js" defer></script>
+    <script src="./javascript/formatar-campos.js" defer></script>
     
-
     <title>Vendinha</title>
 </head>
 <body>
     <header>
         <nav>
             <span class="material-symbols-outlined icon" href="#">storefront</span>
-            <button class="material-symbols-outlined icon" href="#" 
+            <button class="material-symbols-outlined icon hover-botoes" href="#" 
                 data-bs-target="#modal-cadastro-cliente" data-bs-toggle="modal">person_add</button>
         </nav>
     </header>
@@ -53,17 +58,19 @@
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="material-symbols-outlined btn-fechar" data-bs-dismiss="modal">close</button>
+                        <button type="button" class="material-symbols-outlined btn-fechar" onclick="fecharModal()">close</button>
                     </div>
-                    <form id="form-cad-cliente" class="modal-body">
+                    <form class="modal-body">
                         <div class="row row-campos">
                             <div class="col-8">
                                 <div class="input-group input-group-sm mb-3">
                                     <div class="input-group-prepend">
                                         <label class="input-group-text" for="nome-cliente">Nome</label>
                                     </div>
-                                    <input id="nome-cliente" type="text" class="form-control" onclick="limparAviso(this)">
-                                    <span id="texto-aviso-nome" class="validacao" hidden>Campo nome é obrigatório</span>
+                                    <input id="nome-cliente" type="text" class="form-control" onclick="limparAviso(this)"
+                                        placeholder="digite o nome completo">
+                                    <span id="texto-aviso-nome" class="validacao" hidden>
+                                       <span class="material-symbols-outlined">warning</span> Campo nome é obrigatório </span>
                                 </div>
                             </div>
                             <div class="col-4">
@@ -71,8 +78,10 @@
                                     <div class="input-group-prepend">
                                         <label class="input-group-text" for="cpf-cliente">CPF</label>
                                     </div>
-                                    <input id="cpf-cliente" type="text" class="form-control" onclick="limparAviso(this)">
-                                    <span id="texto-aviso-cpf" class="validacao" hidden>CPF é obrigatório</span>
+                                    <input id="cpf-cliente" type="text" class="form-control" onclick="limparAviso(this)"
+                                        maxlength="14" placeholder="digite apenas números">
+                                    <span id="texto-aviso-cpf" class="validacao" hidden>
+                                        <span class="material-symbols-outlined">warning</span> CPF é obrigatório</span>
                                 </div> 
                             </div>
                         </div>
@@ -84,7 +93,8 @@
                                         <label class="input-group-text" for="nascimento-cliente">Nascimento</label>
                                     </div>
                                     <input id="nascimento-cliente" type="date" class="form-control" onclick="limparAviso(this)">
-                                    <span id="texto-aviso-nascimento" class="validacao" hidden>Data de nascimento é obrigatório</span>
+                                    <span id="texto-aviso-nascimento" class="validacao" hidden>
+                                        <span class="material-symbols-outlined">warning</span> Data de nascimento é obrigatório</span>
                                 </div> 
                             </div>
                             <div class="col-6">
@@ -92,7 +102,8 @@
                                     <div class="input-group-prepend">
                                         <label class="input-group-text" for="telefone-cliente">Telefone</label>
                                     </div>
-                                    <input id="telefone-cliente" type="text" class="form-control">
+                                    <input id="telefone-cliente" type="text" class="form-control" 
+                                        maxlength="15" placeholder="digite apenas números com o DDD">
                                 </div> 
                             </div>
                         </div>
@@ -102,7 +113,7 @@
                                     <div class="input-group-prepend">
                                         <label class="input-group-text" for="foto-cliente">URL foto</label>
                                     </div>
-                                    <input id="foto-cliente" type="url" class="form-control">
+                                    <input id="foto-cliente" type="url" class="form-control" placeholder="digite a URL da imagem">
                                 </div> 
                             </div>
                         </div>
@@ -113,31 +124,36 @@
                                     <div class="input-group-prepend">
                                         <label class="input-group-text" for="descricao-cliente">Descrição</label>
                                     </div>
-                                    <input id="descricao-add-divida" type="text" class="form-control" onclick="limparAviso(this)">
-                                    <span id="texto-aviso-descricao" class="validacao" hidden>Descrição é obrigatório</span>
+                                    <input id="descricao-add-divida" type="text" class="form-control" onclick="limparAviso(this)" 
+                                        placeholder="digite a descrição da divida">
+                                    <span id="texto-aviso-descricao" class="validacao" hidden>
+                                        <span class="material-symbols-outlined">warning</span> Descrição é obrigatório</span>
                                 </div> 
                             </div>
                             <div class="col-3">
                                 <div class="input-group input-group-sm mb-3">
                                     <div class="input-group-prepend">
-                                        <label class="input-group-text" for="valor-cliente">Valor</label>
+                                        <label class="input-group-text" for="valor-cliente">R$</label>
                                     </div>
-                                    <input id="valor-add-divida" type="text" class="form-control" onclick="limparAviso(this)">
-                                    <span id="texto-aviso-valor" class="validacao" hidden>Valor é obrigatório</span>
+                                    <input id="valor-add-divida" type="text" maxlength="8" class="form-control" onclick="limparAviso(this)" 
+                                        placeholder="digite o valor">
+                                    <span id="texto-aviso-valor" class="validacao" hidden>
+                                        <span class="material-symbols-outlined">warning</span> Valor é obrigatório</span>
                                 </div> 
                             </div>
                             <div class="col-2">
                                 <button id="btn-adiciona" class="material-symbols-outlined"
                                     onclick="addDividas()" type="button">add</button>                                 
-                            </div> 
-                                           
+                            </div>                                        
                         </div>
                  
                         <div class="row row-aviso-tabela">
                             <div class="col-12">
-                                <span id="texto-aviso-tabela" class="validacao" hidden>Adicone ao menos uma divida</span> 
+                                <span id="texto-aviso-tabela" class="validacao" hidden>
+                                    <span class="material-symbols-outlined">warning</span> Adicone ao menos uma divida</span> 
                             </div>
                         </div>
+
                         <div class="row row-tabela">
                             <div class="col-12">                             
                                 <table class="table">                                   
@@ -160,6 +176,69 @@
                     </form>
                 </div>
             </div>
+        </section>
+
+        <!--- modal dividas -->
+        <section id="modal-gerenciar-dividas" class="modal fade" data-bs-backdrop="static" tabindex="-1">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="material-symbols-outlined btn-fechar" onclick="fecharModal()">close</button>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="perfil-cliente">
+                            <img id="foto-perfil" src="" alt="">
+                            <h4 id="nome-perfil">Nome</h4>
+                        </div>
+    
+                        <form class="form-divida">
+                            <div class="row row-campos">
+                                <div class="col-7">
+                                    <div class="input-group input-group-sm mb-9">
+                                        <div class="input-group-prepend">
+                                            <label class="input-group-text" for="descricao-cliente">Descrição</label>
+                                        </div>
+                                        <input id="descricao-divida" type="text" class="form-control" onclick="limparAviso(this)" 
+                                            placeholder="digite a descrição da divida">
+                                        <span id="texto-aviso-txtDescricao" class="validacao" hidden>
+                                            <span class="material-symbols-outlined">warning</span> Descrição é obrigatório</span>
+                                    </div> 
+                                </div>
+                                <div class="col-3">
+                                    <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend">
+                                            <label class="input-group-text" for="valor-cliente">R$</label>
+                                        </div>
+                                        <input id="valor-divida" type="text" maxlength="8" class="form-control" onclick="limparAviso(this)" 
+                                            placeholder="digite o valor">
+                                        <span id="texto-aviso-txtValor" class="validacao" hidden>
+                                            <span class="material-symbols-outlined">warning</span> Valor é obrigatório</span>
+                                    </div> 
+                                </div>
+                                <div class="col-2">
+                                    <button id="btn-adiciona" class="material-symbols-outlined"
+                                        onclick="cadastrarDivida()" type="button">add</button>                                 
+                                </div>                                        
+                            </div>
+                        </form>
+
+                        <table class="table">                                   
+                            <thead>
+                                <tr>
+                                    <th class="cabecalho-dividas" scope="col">ID</th>
+                                    <th class="cabecalho-dividas" scope="col">DESCRIÇÃO</th>
+                                    <th class="cabecalho-dividas" scope="col">VALOR</th>
+                                    <th class="cabecalho-dividas" scope="col">DATA COMPRA</th>
+                                    <th class="cabecalho-dividas" scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody id="conteudo-tabela-dividas">   
+                            </tbody>
+                        </table> 
+                    </div>
+            </div>
+                </div>
         </section>
 
     </main>

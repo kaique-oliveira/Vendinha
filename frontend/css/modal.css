@@ -6,19 +6,22 @@
 .modal-header{
     display: flex;
     justify-content: flex-end;
-    height: 2.5em;
+    align-items: center;
+    height: 1.5em;
     border-color: rgb(15, 15, 20);
     background-color: rgb(29, 29, 36);
     padding: 10px;
 }
 
 .btn-fechar{
-    color: crimson;
+    margin-bottom: 0.2em;
+    color:rgb(83, 83, 83);
     border: none;
     background-color: rgb(29, 29, 36);
+    height: 0.8em;
 }
 
 .btn-fechar:hover{
-    color: rgb(255, 0, 51);
+    color:  rgb(255, 46, 46);
 }
 

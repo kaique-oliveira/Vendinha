@@ -55,13 +55,14 @@ function carregarConteudoTabela(tabela){
                 <td class="cabecalho-clientes">${item.idade}</td>
                 <td class="cabecalho-clientes">${item.telefone}</td>
                 <td class="btn-group cabecalho-clientes" role="group">                  
-                    <a id="btn-dividas${index++}" role="button" class=" material-symbols-outlined icon"> receipt </a> 
-                    <a role="button" class=" material-symbols-outlined icon"> edit_note </a>
+                    <a id="btn-dividas${index++}" role="button" class="material-symbols-outlined icon hover-botao-dividas"
+                    data-bs-target="#modal-gerenciar-dividas" data-bs-toggle="modal" onClick="pegarIdCliente(this)"> receipt </a> 
+                    <a role="button" class="material-symbols-outlined icon hover-botao-editar"> edit_note </a>
+                    <a role="button" class="material-symbols-outlined icon hover-botao-deletar"> delete </a>
                 </td>
             </tr>`
         ].join("\n");
     }
-
 
 }
 

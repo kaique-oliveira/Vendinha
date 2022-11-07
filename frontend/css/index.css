@@ -29,6 +29,20 @@ nav{
     width: 100%;
 }
 
+.hover-botoes:hover{
+    color: rgb(46, 179, 255);
+}
+
+.hover-botao-deletar:hover{
+    color: rgb(255, 46, 46);
+}
+.hover-botao-editar:hover{
+    color: rgb(255, 130, 46);
+}
+.hover-botao-dividas:hover{
+    color: rgb(70, 255, 46);
+}
+
 .icon{
     text-decoration: none;
     size: 2em;

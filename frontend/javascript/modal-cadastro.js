@@ -29,10 +29,36 @@ function validarCamposObrigatorios(){
             let avisoTabela = document.getElementById('texto-aviso-tabela');
             avisoTabela.hidden = false;
         }else{
-            alert('todos certos')
+            cadastrar();
         }
     }
 }
+
+async function cadastrar(){
+    let objCliente = {
+        id : 0,
+        nome : nome.value,
+        cpf : cpf.value,
+        dataNascimento : nascimento.value,
+        telefone : telefone.value,
+        foto : urlFoto.value,
+        dividas : listaDividas
+    };
+
+    let cliente = new Cliente(objCliente);
+    
+    let response = await cliente.cadastrar();
+
+   if(response){
+    alert("cadastro realizado com sucesso!");
+   }else{
+    alert("Ops, algo deu errado!");
+   }
+    
+    location.reload();   
+}
+
+
 
 
 function addDividas(){
@@ -135,4 +161,9 @@ function limparAviso(campo){
         default:
            return;
     }
+}
+
+
+function fecharModal(){
+    location.reload();
 }

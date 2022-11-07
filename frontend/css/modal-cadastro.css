@@ -1,14 +1,17 @@
+
+
 .modal-body{
     display: flex;
     flex-direction: column;
 }
 
 .row-campos{
-    height: 60px;
+    height: 70px;
+    width: 100%;
 }
 
 .row-aviso-tabela{
-    height: 20px;
+    height: 30px;
     text-align: center;
 }
 
@@ -17,12 +20,17 @@
 }
 
 
-
 .input-group-text{
     border-color: rgb(15, 15, 20);
     background-color: rgb(15, 15, 20);
     color: rgb(83, 83, 83);
     border-radius: 5px 0 0 5px;
+}
+
+#nome-cliente, #cpf-cliente, #nascimento-cliente,
+#descricao-add-divida, #valor-add-divida, #descricao-divida,
+#valor-divida{
+    border-radius: 0 5px 5px 0;
 }
 
 .form-control{
@@ -35,7 +43,7 @@
     justify-content: center;
     height: 2em;
     align-items: center;
-    margin-top: 1em;
+    margin-top: -15px;
 }
 
 .btn-salvar{
@@ -49,6 +57,7 @@
 
 .btn-salvar:hover{
     color:rgb(46, 179, 255);
+    background-color: rgb(12, 14, 15);
 }
 
 .container-add-divida{
@@ -69,29 +78,34 @@
 
 #btn-adiciona:hover{
     color:rgb(46, 179, 255);
+    background-color: rgb(12, 14, 15);
 }
 
 .cabecalho-add-dividas:nth-child(1){
     width: 60%;
-    /*ID*/
+    /*DESCRICAO*/
 }
 .cabecalho-add-dividas:nth-child(2){
     width: 20%;
-     /*Nome*/
+     /*VALOR*/
 }
 .cabecalho-add-dividas:nth-child(3){
     width: 20%;
-     /*Nome*/
+     /*BOTOES*/
 }
 
 #conteudo-tabela-add-divida{
-    height: 120px;
+    height: 90px;
 }
 
 .validacao{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-size: small;
     width: 100%;
+    gap: 0.5em;
+    height: 2.4em;
     color: rgb(255, 91, 91);
     text-align: center;
-    font-weight: 100;
 }
