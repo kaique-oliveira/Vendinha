@@ -3,6 +3,7 @@ let txtDescricao = document.getElementById('descricao-divida');
 let txtValor = document.getElementById('valor-divida');
 let avisoTxtDesc = document.getElementById('texto-aviso-txtDescricao');
 let avisoTxtValor = document.getElementById('texto-aviso-txtValor');
+let total = document.getElementById('valor-total');
 
 let fotoPerfil = document.getElementById('foto-perfil');
 let nomePerfil = document.getElementById('nome-perfil');
@@ -28,6 +29,7 @@ async function carregarTabelaDividas(){
     let conteudoTabela = document.getElementById('conteudo-tabela-dividas');
 
     conteudoTabela.innerHTML = [];
+    soma = parseFloat(0);
 
     for (const item of listaDividas) {
         let data = new Date(item.dataCompra.substring(0,10));
@@ -44,8 +46,11 @@ async function carregarTabelaDividas(){
                 </td>
             </tr>`
         ].join("\n");
+
+        soma += parseFloat(item.valor);
     }
-}
+    total.value = soma.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})
+}   
 
 async function carregarPerfil(){
     let objCliente = new Cliente('');
@@ -124,8 +129,12 @@ async function deletarDivida(btn){
 }
 
 let dividaEditada;
+let btnEditarDivida;
 
 function recuperarDivida(btn){
+    btnEditarDivida = btn;
+
+    btn.style.color = 'rgb(255, 130, 46)';
     let dividaRecup =  pegarDividaAtual(btn);
     idDivida = dividaRecup[0];
 
@@ -142,7 +151,7 @@ function recuperarDivida(btn){
 }
 
 async function editarDivida(){
-
+    
     dividaEditada.descricao = txtDescricao.value;
     dividaEditada.valor = txtValor.value;
 
@@ -152,10 +161,12 @@ async function editarDivida(){
 
     if(response){
         alert("divida editada com sucesso!");
+        btnEditarDivida.style.color = 'rgb(211, 211, 211)';
     }
     else{
         alert("Ops, algo deu errado ao tentar editar!");
     }
+
     txtDescricao.value = '';
     txtValor.value = '';
     idDivida = 0;
@@ -175,7 +186,7 @@ function exibirAvisoDivida(){
         }
 }
 
-function limparAviso(campo){
+function limparAvisoDivida(campo){
     switch(campo.id.toString()){
         case 'descricao-divida':
             avisoTxtDesc.hidden = true;
@@ -185,3 +196,5 @@ function limparAviso(campo){
             break;
     }
 }
+
+

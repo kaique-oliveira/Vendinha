@@ -31,5 +31,34 @@
 
         return cliente.json();
     }
+
+    editar = async() => {
+        let status = false;
+        
+        await fetch(`https://localhost:7049/api/cliente/editar/${this.cliente.id}`, {
+            method: "PUT",
+            body: JSON.stringify(this.cliente),
+            headers: {"Content-type": "application/json; charset=UTF-8"}
+        }).then(response => {
+
+            status = response.ok ? true : false;
+        });
+
+        return status;
+    }
+
+    deletar = async (idCliente) => {
+
+        let status = false;
+
+        await fetch(`https://localhost:7049/api/cliente/deletar/${idCliente}`, {
+            method: "DELETE",
+            headers: {"Content-type": "application/json; charset=UTF-8"},                 
+        }).then(response => {
+            status = response.ok ? true : false;
+        });
+
+        return status;
+    };
 };
 

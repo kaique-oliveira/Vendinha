@@ -37,6 +37,13 @@
     <main>
         <!-- tabela -->
         <section>
+            <div class="input-group mb-3 container-pesquisar">
+                <div class="input-group-prepend">
+                  <span class="input-group-text material-symbols-outlined" id="lbl-pesquisar">search</span>
+                </div>
+                <input id="pesquisar" type="text" class="form-control" placeholder="Digite um nome" aria-label="Username" aria-describedby="campo-pesquisar">
+            </div>
+
             <table class="table">
                 <thead>
                     <tr>
@@ -51,6 +58,14 @@
                 <tbody id="conteudo-tabela-clientes">   
                 </tbody>
             </table>
+
+            <div id="footer-tabela">   
+                <div id="footer-tabela-btn">
+                    <button class="btn-pagina" onclick="voltarPag()">Anterior</button>
+                    <button class="btn-pagina" onclick="proximaPag()">Proximo</button>                     
+                </div>                 
+                <span id="legenda-paginacao"></span> 
+            </div>
         </section>
 
         <!-- modal cadastro cliente -->
@@ -60,6 +75,7 @@
                     <div class="modal-header">
                         <button type="button" class="material-symbols-outlined btn-fechar" onclick="fecharModal()">close</button>
                     </div>
+                    
                     <form class="modal-body">
                         <div class="row row-campos">
                             <div class="col-8">
@@ -67,7 +83,7 @@
                                     <div class="input-group-prepend">
                                         <label class="input-group-text" for="nome-cliente">Nome</label>
                                     </div>
-                                    <input id="nome-cliente" type="text" class="form-control" onclick="limparAviso(this)"
+                                    <input id="nome-cliente" type="text" class="form-control" onclick="limparAvisoCliente(this)"
                                         placeholder="digite o nome completo">
                                     <span id="texto-aviso-nome" class="validacao" hidden>
                                        <span class="material-symbols-outlined">warning</span> Campo nome é obrigatório </span>
@@ -78,7 +94,7 @@
                                     <div class="input-group-prepend">
                                         <label class="input-group-text" for="cpf-cliente">CPF</label>
                                     </div>
-                                    <input id="cpf-cliente" type="text" class="form-control" onclick="limparAviso(this)"
+                                    <input id="cpf-cliente" type="text" class="form-control" onclick="limparAvisoCliente(this)"
                                         maxlength="14" placeholder="digite apenas números">
                                     <span id="texto-aviso-cpf" class="validacao" hidden>
                                         <span class="material-symbols-outlined">warning</span> CPF é obrigatório</span>
@@ -92,7 +108,8 @@
                                     <div class="input-group-prepend">
                                         <label class="input-group-text" for="nascimento-cliente">Nascimento</label>
                                     </div>
-                                    <input id="nascimento-cliente" type="date" class="form-control" onclick="limparAviso(this)">
+                                    <input id="nascimento-cliente" type="date" class="form-control" onclick="limparAvisoCliente(this)"
+                                    min="1999-01-02" max="2000-12-31">
                                     <span id="texto-aviso-nascimento" class="validacao" hidden>
                                         <span class="material-symbols-outlined">warning</span> Data de nascimento é obrigatório</span>
                                 </div> 
@@ -118,58 +135,59 @@
                             </div>
                         </div>
 
-                        <div class="row row-campos">
-                            <div class="col-7">
-                                <div class="input-group input-group-sm mb-9">
-                                    <div class="input-group-prepend">
-                                        <label class="input-group-text" for="descricao-cliente">Descrição</label>
-                                    </div>
-                                    <input id="descricao-add-divida" type="text" class="form-control" onclick="limparAviso(this)" 
-                                        placeholder="digite a descrição da divida">
-                                    <span id="texto-aviso-descricao" class="validacao" hidden>
-                                        <span class="material-symbols-outlined">warning</span> Descrição é obrigatório</span>
-                                </div> 
+                        <div id="container-divida">
+                            <div class="row row-campos">
+                                <div class="col-7">
+                                    <div class="input-group input-group-sm mb-9">
+                                        <div class="input-group-prepend">
+                                            <label class="input-group-text" for="descricao-cliente">Descrição</label>
+                                        </div>
+                                        <input id="descricao-add-divida" type="text" class="form-control" onclick="limparAvisoCliente(this)" 
+                                            placeholder="digite a descrição da divida">
+                                        <span id="texto-aviso-descricao" class="validacao" hidden>
+                                            <span class="material-symbols-outlined">warning</span> Descrição é obrigatório</span>
+                                    </div> 
+                                </div>
+                                <div class="col-3">
+                                    <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend">
+                                            <label class="input-group-text" for="valor-cliente">R$</label>
+                                        </div>
+                                        <input id="valor-add-divida" type="text" maxlength="8" class="form-control" onclick="limparAvisoCliente(this)" 
+                                            placeholder="digite o valor">
+                                        <span id="texto-aviso-valor" class="validacao" hidden>
+                                            <span class="material-symbols-outlined">warning</span> Valor é obrigatório</span>
+                                    </div> 
+                                </div>
+                                <div class="col-2">
+                                    <button id="btn-adiciona" class="material-symbols-outlined"
+                                        onclick="addDividas()" type="button">add</button>                                 
+                                </div>                                        
                             </div>
-                            <div class="col-3">
-                                <div class="input-group input-group-sm mb-3">
-                                    <div class="input-group-prepend">
-                                        <label class="input-group-text" for="valor-cliente">R$</label>
-                                    </div>
-                                    <input id="valor-add-divida" type="text" maxlength="8" class="form-control" onclick="limparAviso(this)" 
-                                        placeholder="digite o valor">
-                                    <span id="texto-aviso-valor" class="validacao" hidden>
-                                        <span class="material-symbols-outlined">warning</span> Valor é obrigatório</span>
-                                </div> 
+                    
+                            <div class="row row-aviso-tabela">
+                                <div class="col-12">
+                                    <span id="texto-aviso-tabela" class="validacao" hidden>
+                                        <span class="material-symbols-outlined">warning</span> Adicone ao menos uma divida</span> 
+                                </div>
                             </div>
-                            <div class="col-2">
-                                <button id="btn-adiciona" class="material-symbols-outlined"
-                                    onclick="addDividas()" type="button">add</button>                                 
-                            </div>                                        
-                        </div>
-                 
-                        <div class="row row-aviso-tabela">
-                            <div class="col-12">
-                                <span id="texto-aviso-tabela" class="validacao" hidden>
-                                    <span class="material-symbols-outlined">warning</span> Adicone ao menos uma divida</span> 
-                            </div>
-                        </div>
 
-                        <div class="row row-tabela">
-                            <div class="col-12">                             
-                                <table class="table">                                   
-                                    <thead>
-                                        <tr>
-                                            <th class="cabecalho-add-dividas" scope="col">DESCRIÇÃO</th>
-                                            <th class="cabecalho-add-dividas" scope="col">VALOR</th>
-                                            <th class="cabecalho-add-dividas" scope="col"></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="conteudo-tabela-add-divida">   
-                                    </tbody>
-                                </table>                             
+                            <div class="row row-tabela">
+                                <div class="col-12">                             
+                                    <table class="table">                                   
+                                        <thead>
+                                            <tr>
+                                                <th class="cabecalho-add-dividas" scope="col">DESCRIÇÃO</th>
+                                                <th class="cabecalho-add-dividas" scope="col">VALOR</th>
+                                                <th class="cabecalho-add-dividas" scope="col"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="conteudo-tabela-add-divida">   
+                                        </tbody>
+                                    </table>                             
+                                </div>
                             </div>
                         </div>
-
                         <div class="container-btn">
                             <button id="btn-salva" class="btn-salvar" type="button" onclick="validarCamposObrigatorios()">salvar</button>
                         </div>                    
@@ -199,7 +217,7 @@
                                         <div class="input-group-prepend">
                                             <label class="input-group-text" for="descricao-cliente">Descrição</label>
                                         </div>
-                                        <input id="descricao-divida" type="text" class="form-control" onclick="limparAviso(this)" 
+                                        <input id="descricao-divida" type="text" class="form-control" onclick="limparAvisoDivida(this)" 
                                             placeholder="digite a descrição da divida">
                                         <span id="texto-aviso-txtDescricao" class="validacao" hidden>
                                             <span class="material-symbols-outlined">warning</span> Descrição é obrigatório</span>
@@ -210,7 +228,7 @@
                                         <div class="input-group-prepend">
                                             <label class="input-group-text" for="valor-cliente">R$</label>
                                         </div>
-                                        <input id="valor-divida" type="text" maxlength="8" class="form-control" onclick="limparAviso(this)" 
+                                        <input id="valor-divida" type="text" maxlength="8" class="form-control" onclick="limparAvisoDivida(this)" 
                                             placeholder="digite o valor">
                                         <span id="texto-aviso-txtValor" class="validacao" hidden>
                                             <span class="material-symbols-outlined">warning</span> Valor é obrigatório</span>
@@ -236,9 +254,16 @@
                             <tbody id="conteudo-tabela-dividas">   
                             </tbody>
                         </table> 
+
+                        <div class="input-group input-group-sm mb-3">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text" for="valor-total">Total</label>
+                            </div>
+                            <input id="valor-total" type="text" maxlength="8" disabled class="form-control">
+                        </div> 
                     </div>
-            </div>
                 </div>
+            </div>
         </section>
 
     </main>
