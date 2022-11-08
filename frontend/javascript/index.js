@@ -42,7 +42,7 @@ async function criarPaginacaoTabela(lista){
 async function consultarCliente(){
     let objCliente = new Cliente();
     let todos = await objCliente.consultarTodos();
-    criarPaginacaoTabela(todos)
+    criarPaginacaoTabela(todos);
 }
 
 function carregarConteudoTabela(){

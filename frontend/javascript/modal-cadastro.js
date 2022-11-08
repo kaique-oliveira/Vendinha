@@ -163,7 +163,7 @@ function atualizarTabelaDividas(){
                 <td class="cabecalho-add-dividas">${item.valor}</td>
                 <td class="btn-group cabecalho-add-dividas" role="group">                  
                     <a id="btn-deletar-divida${index++}" role="button" onClick=" removerDividaLista(this)"
-                        class="material-symbols-outlined icon"> delete </a>     
+                        class="material-symbols-outlined icon hover-botao-deletar"> delete </a>     
                 </td>
             </tr>`
         ].join("\n");
@@ -215,9 +215,9 @@ function validarCpf(){
 
 
         var finalCpf = Cpf.substring(9);
+        let finalValidado = primeiroNum.toString() + segundoNum.toString();
 
-
-        if (finalCpf == (primeiroNum + segundoNum))
+        if (finalCpf == finalValidado)
         {
             return true;
         }

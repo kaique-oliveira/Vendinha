@@ -70,8 +70,8 @@ section{
 
  /*Tabela*/
 thead{
-    background-color: rgb(15, 15, 20);
-    color: rgb(46, 179, 255);
+    background-color: rgb(46, 179, 255);
+    color: rgb(15, 15, 20);
 }
 
 tr{
