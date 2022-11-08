@@ -46,15 +46,12 @@ namespace Vendinha.Api.Controllers
         [HttpPut("editar/{id}")]
         public async Task<IActionResult> PutDivida(int id, Divida divida)
         {
-            if (id != divida.Id)
-            {
-                return BadRequest();
-            }
+           var _divida = await _context.Divida.FirstOrDefaultAsync(d => d.Id == id);
 
-            var _divida = await _context.Divida.FirstOrDefaultAsync(d => d.Id == id);
+            if (_divida is null) return NotFound();
 
             _divida.Descricao = divida.Descricao;
-            _divida.Valor = divida.Valor; 
+            _divida.Valor = divida.Valor;
 
             try
             {
