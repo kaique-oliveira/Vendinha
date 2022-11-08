@@ -1,4 +1,5 @@
 # **Vendinha**
+*Video apresentação no final*
 
 ## **Informações**
 *Api desenvolvida com C# .Net 6 utilizando o entity framwork para mapear as entidades e gerar as migrações*
@@ -114,8 +115,6 @@ Serão avaliados nesse projeto o seu domínio nas tecnologias .NET e Javascript,
 
 ## Resultado final
 
-<a href="https://www.loom.com/share/8506af3a4f414b0a8d9b7b7950583a98">
-    <img src="https://www.loom.com/share/8506af3a4f414b0a8d9b7b7950583a98" 
-alt="IMAGE ALT TEXT HERE" width="480" height="360" border="10" /></a>
+<a href="https://www.loom.com/share/8506af3a4f414b0a8d9b7b7950583a98">Acesse o video da apresentação aqui!</a>
 
 
