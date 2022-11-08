@@ -115,7 +115,7 @@ Serão avaliados nesse projeto o seu domínio nas tecnologias .NET e Javascript,
 ## Resultado final
 
 <a href="https://www.loom.com/share/8506af3a4f414b0a8d9b7b7950583a98">
-    <img src="https://drive.google.com/file/d/1CKrJ72s-gv9RMolAPLOMRux1QBRb_fzZ/view?usp=share_link" 
+    <img src="https://www.loom.com/share/8506af3a4f414b0a8d9b7b7950583a98" 
 alt="IMAGE ALT TEXT HERE" width="480" height="360" border="10" /></a>
 
 
