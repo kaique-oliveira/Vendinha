@@ -23,7 +23,10 @@ namespace Vendinha.Api.Controllers
         [HttpGet("pegartodos")]
         public async Task<ActionResult<IEnumerable<Cliente>>> GetCliente()
         {
-            return await _context.Cliente.OrderBy(c => c.Nome).ToListAsync();
+
+            return await _context.Cliente.ToListAsync();
+
+    
         }
 
         // GET: api/cliente/5

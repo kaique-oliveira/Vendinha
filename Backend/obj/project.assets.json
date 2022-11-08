@@ -2307,11 +2307,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Interfocus\\Desktop\\Vendinha\\backend\\Vendinha.Api.csproj",
+      "projectUniqueName": "C:\\Users\\Interfocus\\Desktop\\kaique\\Vendinha\\backend\\Vendinha.Api.csproj",
       "projectName": "Vendinha.Api",
-      "projectPath": "C:\\Users\\Interfocus\\Desktop\\Vendinha\\backend\\Vendinha.Api.csproj",
+      "projectPath": "C:\\Users\\Interfocus\\Desktop\\kaique\\Vendinha\\backend\\Vendinha.Api.csproj",
       "packagesPath": "C:\\Users\\Interfocus\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Interfocus\\Desktop\\Vendinha\\backend\\obj\\",
+      "outputPath": "C:\\Users\\Interfocus\\Desktop\\kaique\\Vendinha\\backend\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Interfocus\\AppData\\Roaming\\NuGet\\NuGet.Config",

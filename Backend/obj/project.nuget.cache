@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "SlIBphIbBMzJJndfhf4FZ/MjGFhyO9VAXFkpDNbk31NbkjkXFn2s8gRlDDlYYfgo/jArnzV0A7aOmHyvqZqJDg==",
+  "dgSpecHash": "gXcZvPN7aHKytQilflW9qEMuq7Er2F7USmb/iw1XzA1gJUdvf71LfSDsOA6dO3dm2z9uTCYfXdf93eepI2UbfQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Interfocus\\Desktop\\Vendinha\\backend\\Vendinha.Api.csproj",
+  "projectFilePath": "C:\\Users\\Interfocus\\Desktop\\kaique\\Vendinha\\backend\\Vendinha.Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Interfocus\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Interfocus\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",

@@ -22,7 +22,7 @@ function pegarIdCliente(botao){
 
 async function carregarTabelaDividas(){
 
-    let objDivida = new Divida('');
+    let objDivida = new Divida();
     carregarPerfil();
 
     let listaDividas = await objDivida.consultarTodos(idCliente);

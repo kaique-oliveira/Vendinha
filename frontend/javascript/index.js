@@ -8,28 +8,65 @@ let tabela = {
 
 async function criarPaginacaoTabela(lista){
 
-    let listaClientes = lista;
+    let listaRecebida = lista;
 
-    tabela.numRows = listaClientes.length;
+    tabela.numRows = listaRecebida.length;
     numPag = Number.isInteger((tabela.numRows / 10)) ? (tabela.numRows / 10) : Math.round((tabela.numRows / 10) + 1);
+
     let indice = 0;
-    let pag = [];
+   
     tabela.paginacao = [];
+
+
+    let pag = [];
+    let objDivida = new Divida();
+    let total = 0;
 
     //criando a estrutura de paginacao
     for (let index = 0; index < numPag; index++) {
 
         for (let index = 0; index < 10; index++) {
-          if(listaClientes[indice]){
-            pag.push(listaClientes[indice]);   
-          }else{
+
+            let cliente = {
+                id : 0,
+                nome : '',
+                cpf : '',
+                nascimento : '',
+                telefone : '',
+                foto : '',
+                dividas : [],
+                total : 0
+            };
+
+          if(listaRecebida[indice]){
+
+            listaRecebida[indice].dividas = await objDivida.consultarTodos(listaRecebida[indice].id);
+
+            for (const d of listaRecebida[indice].dividas) {
+                total += d.valor;
+            }
+
+            cliente.id = listaRecebida[indice].id;
+            cliente.nome = listaRecebida[indice].nome;
+            cliente.cpf = listaRecebida[indice].cpf;
+            cliente.nascimento = listaRecebida[indice].nascimento;
+            cliente.telefone = listaRecebida[indice].telefone;
+            cliente.foto = listaRecebida[indice].foto;
+            cliente.dividas = listaRecebida[indice].dividas;
+            cliente.total = total;
+
+            pag.push(cliente);   
+
+            total = 0;
+          }
+          else{
             break;
           }  
 
           indice++;
         }
 
-        tabela.paginacao.push(pag); 
+        tabela.paginacao.push(pag.sort((a,b) => b.total - a.total)); 
 
         if(pag.length == 10){
             pag = [];

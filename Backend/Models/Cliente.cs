@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
-using Vendinha.Api.Services;
 
 namespace Vendinha.Api.Models
 {
@@ -23,8 +22,6 @@ namespace Vendinha.Api.Models
         public string Telefone { get; set; }
 
         public IList<Divida>? Dividas { get; set; }
-
-
 
         public override string ToString()
         {
