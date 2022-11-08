@@ -91,7 +91,7 @@ th, td{
     /*ID*/
 }
 .cabecalho-clientes:nth-child(2){
-    width: 40%;
+    width: 25%;
      /*Nome*/
 }
 .cabecalho-clientes:nth-child(3){
@@ -107,6 +107,12 @@ th, td{
      /*Telefone*/
 }
 .cabecalho-clientes:nth-child(6){
+    display: flex;
+    gap: 0.5em;
+    width: 15%;
+     /*Botoes*/
+}
+.cabecalho-clientes:nth-child(7){
     display: flex;
     gap: 0.5em;
     width: 10%;

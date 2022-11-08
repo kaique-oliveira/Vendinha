@@ -41,15 +41,16 @@ async function carregarTabelaDividas(){
                 <td class="cabecalho-dividas">${item.valor.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</td>
                 <td class="cabecalho-dividas">${data.getUTCDate().toString().padStart(2,"0")}/${data.getUTCMonth().toString().padStart(2,"0")}/${data.getUTCFullYear()}</td>
                 <td class="btn-group cabecalho-dividas" role="group">                                    
-                    <a role="button" onClick="recuperarDivida(this)" class="material-symbols-outlined icon hover-botao-editar"> edit_note </a>
-                    <a role="button" onClick="deletarDivida(this)" class="material-symbols-outlined icon hover-botao-deletar"> delete </a>
+                    <a role="button" onClick="recuperarDivida(this)" class="material-symbols-outlined icon hover-botao-editar" title="Editar divida"> edit_note </a>
+                    <a role="button" onClick="deletarDivida(this)" class="material-symbols-outlined icon hover-botao-deletar" title="Deletar divida"> delete </a>
                 </td>
             </tr>`
         ].join("\n");
 
         soma += parseFloat(item.valor);
     }
-    total.value = soma.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})
+
+    total.value = soma.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
 }   
 
 async function carregarPerfil(){
@@ -66,7 +67,7 @@ async function carregarPerfil(){
 async function cadastrarDivida(){
 
     if (txtDescricao.value && txtValor.value) {
-        if (idDivida == 0 && dividaEditada == undefined) {
+        if (idDivida == 0) {
             let data = new Date();
             let divida = {
                 id : 0,
@@ -128,7 +129,6 @@ async function deletarDivida(btn){
     idDivida = 0;
 }
 
-let dividaEditada;
 let btnEditarDivida;
 
 function recuperarDivida(btn){
@@ -141,19 +141,17 @@ function recuperarDivida(btn){
     txtDescricao.value = dividaRecup[1];
     txtValor.value = dividaRecup[2] .substring(3).replace(',', '.');
 
-    dividaEditada = {
-        id : idDivida,
-        descricao : '',
-        valor : '',
-        dataCompra : `${dividaRecup[3].substring(6,10)}-${dividaRecup[3].substring(3,5)}-${dividaRecup[3].substring(0,2)}`,
-        clienteId : idCliente
-    };
+
 }
 
 async function editarDivida(){
     
-    dividaEditada.descricao = txtDescricao.value;
-    dividaEditada.valor = txtValor.value;
+    let dividaEditada = {
+        id : idDivida,
+        descricao : txtDescricao.value,
+        valor : txtValor.value,
+        clienteId : idCliente
+    };
 
     let objDivida = new Divida(dividaEditada);
 

@@ -29,7 +29,7 @@
     <header>
         <nav>
             <span class="material-symbols-outlined icon" href="#">storefront</span>
-            <button class="material-symbols-outlined icon hover-botoes" href="#" 
+            <button class="material-symbols-outlined icon hover-botoes" href="#" title="Cadastrar cliente"
                 data-bs-target="#modal-cadastro-cliente" data-bs-toggle="modal">person_add</button>
         </nav>
     </header>
@@ -52,6 +52,7 @@
                         <th class="cabecalho-clientes" scope="col">CPF</th>
                         <th class="cabecalho-clientes" scope="col">IDADE</th>
                         <th class="cabecalho-clientes" scope="col">TELEFONE</th>
+                        <th class="cabecalho-clientes" scope="col">TOTAL DA DIVIDA</th>
                         <th class="cabecalho-clientes" scope="col"> </th>
                     </tr>
                 </thead>
@@ -61,8 +62,8 @@
 
             <div id="footer-tabela">   
                 <div id="footer-tabela-btn">
-                    <button class="btn-pagina" onclick="voltarPag()">Anterior</button>
-                    <button class="btn-pagina" onclick="proximaPag()">Proximo</button>                     
+                    <button class="btn-pagina" onclick="voltarPag()"" title="Página anterior">Anterior</button>
+                    <button class="btn-pagina" onclick="proximaPag()" title="Proxima página">Proximo</button>                     
                 </div>                 
                 <span id="legenda-paginacao"></span> 
             </div>
@@ -73,7 +74,7 @@
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="material-symbols-outlined btn-fechar" onclick="fecharModal()">close</button>
+                        <button type="button" class="material-symbols-outlined btn-fechar" onclick="fecharModal()" title="Fechar cadastro">close</button>
                     </div>
                     
                     <form class="modal-body">
@@ -161,7 +162,7 @@
                                 </div>
                                 <div class="col-2">
                                     <button id="btn-adiciona" class="material-symbols-outlined"
-                                        onclick="addDividas()" type="button">add</button>                                 
+                                        onclick="addDividas()" title="Adicionar uma divida" type="button">add</button>                                 
                                 </div>                                        
                             </div>
                     
@@ -189,7 +190,7 @@
                             </div>
                         </div>
                         <div class="container-btn">
-                            <button id="btn-salva" class="btn-salvar" type="button" onclick="validarCamposObrigatorios()">salvar</button>
+                            <button id="btn-salva" class="btn-salvar" type="button" title="Salvar cadastro" onclick="validarCamposObrigatorios()">salvar</button>
                         </div>                    
                     </form>
                 </div>
@@ -201,7 +202,7 @@
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="material-symbols-outlined btn-fechar" onclick="fecharModal()">close</button>
+                        <button type="button" class="material-symbols-outlined btn-fechar" title="Fechar divida" onclick="fecharModal()">close</button>
                     </div>
                     <div class="modal-body">
 
@@ -235,7 +236,7 @@
                                     </div> 
                                 </div>
                                 <div class="col-2">
-                                    <button id="btn-adiciona" class="material-symbols-outlined"
+                                    <button id="btn-adiciona" class="material-symbols-outlined" title="Salvar cadastro ou edição da divida"
                                         onclick="cadastrarDivida()" type="button">add</button>                                 
                                 </div>                                        
                             </div>

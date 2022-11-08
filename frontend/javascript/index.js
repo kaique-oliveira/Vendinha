@@ -31,7 +31,7 @@ async function criarPaginacaoTabela(lista){
                 id : 0,
                 nome : '',
                 cpf : '',
-                nascimento : '',
+                idade : '',
                 telefone : '',
                 foto : '',
                 dividas : [],
@@ -49,7 +49,7 @@ async function criarPaginacaoTabela(lista){
             cliente.id = listaRecebida[indice].id;
             cliente.nome = listaRecebida[indice].nome;
             cliente.cpf = listaRecebida[indice].cpf;
-            cliente.nascimento = listaRecebida[indice].nascimento;
+            cliente.idade = listaRecebida[indice].idade;
             cliente.telefone = listaRecebida[indice].telefone;
             cliente.foto = listaRecebida[indice].foto;
             cliente.dividas = listaRecebida[indice].dividas;
@@ -97,14 +97,15 @@ function carregarConteudoTabela(){
                 <td class="cabecalho-clientes">${item.cpf}</td>
                 <td class="cabecalho-clientes">${item.idade}</td>
                 <td class="cabecalho-clientes">${item.telefone ? item.telefone : 'Não possui'}</td>
+                <td class="cabecalho-clientes">${item.total.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</td>
                 <td class="btn-group cabecalho-clientes" role="group">                  
-                    <a id="btn-dividas${index++}" role="button" class="material-symbols-outlined icon hover-botao-dividas"
+                    <a id="btn-dividas${index++}" role="button" class="material-symbols-outlined icon hover-botao-dividas" title="Detalhes das dividas"
                     data-bs-target="#modal-gerenciar-dividas" data-bs-toggle="modal" onClick="pegarIdCliente(this)"> receipt </a> 
                    
-                    <a role="button" class="material-symbols-outlined icon hover-botao-editar" 
+                    <a role="button" class="material-symbols-outlined icon hover-botao-editar" title="Editar cliente"
                         data-bs-target="#modal-cadastro-cliente" data-bs-toggle="modal" onClick="recuperarCliente(this)"> edit_note </a>
                     
-                        <a role="button" class="material-symbols-outlined icon hover-botao-deletar"
+                        <a role="button" class="material-symbols-outlined icon hover-botao-deletar" title="Deletar cliente"
                             onClick="deletarCliente(this)"> delete </a>
                 </td>
             </tr>`

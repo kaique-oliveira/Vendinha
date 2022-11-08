@@ -51,7 +51,10 @@ namespace Vendinha.Api.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(divida).State = EntityState.Modified;
+            var _divida = await _context.Divida.FirstOrDefaultAsync(d => d.Id == id);
+
+            _divida.Descricao = divida.Descricao;
+            _divida.Valor = divida.Valor; 
 
             try
             {
